@@ -1,168 +1,133 @@
-# 🧠 GovRFP AI — Government RFP Analyzer with Generative AI + RAG
+# 🚀 **RFP-AI Analyzer**
 
-> ✨ Automating compliance analysis, eligibility filtering, submission checklist extraction, and risk detection from government RFPs using **Gemini 1.5 Pro**, **FastAPI**, and a **React frontend**.
+Automating Government RFP Analysis using Generative AI, RAG & Agentic Workflows
 
----
+## **Problem Statement**
 
-## 📌 Problem Statement
-
-Responding to U.S. government RFPs is time-consuming, legal-heavy, and error-prone. Manual review often leads to missed compliance criteria, overlooked risks, or inefficient proposal prep.
-
-### 🎯 Objective
-Build an AI-powered solution that **automates RFP analysis**, using **Generative AI**, **Retrieval-Augmented Generation (RAG)**, and **agentic workflows** to:
-
-- ✅ Check legal & compliance eligibility
-- ✅ Extract required documents & submission guidelines
-- ✅ Detect risky contract clauses
-- ✅ Generate a downloadable AI summary
+The current RFP review process is manual, time-consuming, and high-risk.
+- ⌛ Takes hours to days to review a single RFP
+- ❌ Prone to missing deal-breaker clauses
+- ⚖️ Difficult to identify biased terms or eligibility gaps
+- 🔁 Repetitive for every new RFP
+- 🤯 No central intelligence or analytics
 
 ---
 
-## 🏗️ Tech Stack
+## 🎯 **Goal**
 
-| Layer     | Tech Used                       |
-|-----------|---------------------------------|
-| ✨ AI      | Google Gemini 1.5 Pro           |
-| 🔍 RAG     | FAISS + Custom Chunk Embedding |
-| 🧠 Backend | Python, FastAPI, PyMuPDF        |
-| 🌐 Frontend| React.js, Axios, html2pdf.js    |
-| 📂 Storage | In-memory processing            |
+An AI-powered RFP analysis tool that automates document review using:
+- 🧠 Generative AI
+- 📚 RAG (Retrieval-Augmented Generation)
+- 🤖 Agentic Workflows
 
----
-
-## 🧩 Features
-
-### 🛡️ Compliance Agent
-- Checks legal registration, certifications, past performance
-- Flags missing capabilities (e.g., medical staffing)
-
-### ✅ Eligibility Agent
-- Summarizes “must-have” qualifications
-- Extracts eligibility clauses automatically
-
-### 📋 Checklist Builder
-- Extracts document formatting, required sections, and submission instructions
-- Output is actionable and ready-to-use
-
-### ⚠️ Risk Analyzer
-- Flags biased or one-sided contract terms
-- Suggests AI-generated legal edits or counter clauses
-
-### 🧾 AI Summary Generator
-- Combines all sections into a **Markdown summary**
-- Includes one-click export to **PDF**
+| Challenge | Automation |
+|----------|------|
+| Manual Review | 🔁 Automated AI-Powered Analysis |
+| High Error Rate | ✅ Accurate, Rule-Based Compliance |
+| Missed Clauses | ⚠️ Risk Detection & Flagging |
+| Long Review Time | 🚀 Instant Verdicts in Minutes |
 
 ---
 
-## 🖼️ UI Overview
+## 🌟 **Innovation Highlights**
 
-- Drag & drop PDF RFP and company profile
-- Real-time status while analyzing
-- View structured response:
-  - Compliance status
-  - Eligibility verdict
-  - Submission checklist
-  - Contract risk report
-- Export report as **printable PDF**
+| | Innovation | Description |
+|--|-------------|-------------|
+| 🔄 | **Agentic Workflows** | A modular system of AI agents—each focused on Compliance, Eligibility, Risk, and Checklist generation. Data flows downstream for deeper contextual understanding. |
+| 🧠 | **RAG-Driven Legal Intelligence** | Combines semantic search and LLMs to retrieve exact clauses, match company data, and explain results. |
+| 🧪 | **Compliance Simulator** | Toggle hypothetical certifications and simulate eligibility dynamically. |
+| 🤝 | **Multi-user Collaboration Ready** | Designed to support legal and sales team reviews in parallel.
 
 ---
 
-## 🚀 Running the Project (Local LAN Setup)
+## 🧱 **Architecture Overview**
 
-### 🖥 Backend (Your Machine)
-
-```bash
-cd backend
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-
-# Run on LAN
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```mermaid
+graph TD
+    A[Upload RFP & Company Docs] --> B[PDF Parsing & Chunking]
+    B --> C[Embeddings & Vector Storage]
+    C --> D[RAG Engine for Retrieval]
+    D --> E[Agentic Engine]
+    E --> F1[Compliance Check]
+    E --> F2[Eligibility Assessment]
+    E --> F3[Checklist Generator]
+    E --> F4[Contract Risk Analyzer]
+    F1 & F2 & F3 & F4 --> G[UI + Chatbot + Report Generator]
 ```
+## 🧱 **Tech Stack**
 
-Ensure you're connected to the same Wi-Fi as the frontend.
-
-> 🔍 Get your IP using `ipconfig` and look for `IPv4 Address` (e.g., `192.168.1.42`)
-
----
-
-### 💻 Frontend (Friend’s Machine)
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-#### ✅ Update API base in `src/api.js`:
-
-```js
-const API_URL = "http://192.168.1.42:8000"; // Replace with actual backend IP
-```
+| Layer         | Tools / Frameworks                    |
+|---------------|----------------------------------------|
+| **Frontend**  | React.js, TailwindCSS, ShadCN          |
+| **Backend**   | FastAPI                                |
+| **LLMs**      | OpenAI GPT-4 / Gemini Pro              |
+| **RAG Engine**| LangChain / LlamaIndex                 |
+| **Vector DB** | FAISS / Chroma                         |
+| **Agents**    | CrewAI / LangGraph                     |           |
+| **Hosting**   | Vercel |
 
 ---
 
-## 📂 Project Structure
+## 🔍 **Features**
 
-```
-backend/
-│
-├── main.py
-├── rag_pipeline.py
-├── agents/
-│   ├── compliance_checker.py
-│   ├── eligibility_extractor.py
-│   ├── checklist_builder.py
-│   └── risk_analyzer.py
-├── utils/
-│   ├── pdf_parser.py
-│   └── embedding_utils.py
+- **Automated RFP Analysis**  
+  Upload government RFP PDFs and get a structured breakdown including eligibility, requirements, and evaluation metrics.
 
-frontend/
-├── src/
-│   ├── App.jsx
-│   ├── api.js
-│   └── components/
-│       ├── UploadForm.jsx
-│       ├── ResultsDisplay.jsx
-│       └── ExportButton.jsx
-```
+- **RAG-Based Contextual Understanding**  
+  Uses Retrieval-Augmented Generation to fetch context from the RFP and provide accurate, grounded responses.
+
+- **Agentic Workflow with Role-Based Execution**  
+  Simulates different expert agents (Legal, Technical, Financial) to collaboratively review and summarize RFP sections.
+
+- **Gap & Risk Analysis**  
+  Detects missing compliance requirements or potential disqualifiers based on your business profile.
+
+- **Summarized Outputs**  
+  Generates executive summaries, proposal highlights, and requirement tables for quick decision-making.
+
+- **Export & Collaboration**  
+  Download results in Excel or PDF and share internally with your team for proposal drafting.
 
 ---
 
-## 📸 Screenshots (Insert These)
+## 💼 **Business Value**
 
-1. Upload UI
-2. Markdown summary display
-3. PDF export in browser
-4. FastAPI Swagger UI
+- **Time Savings**  
+  Reduces RFP review time from **hours to minutes**, allowing more tenders to be considered simultaneously.
 
----
+- **Better Decision-Making**  
+  Helps teams identify *winnable* RFPs faster by highlighting feasibility and risks upfront.
 
-## 🧠 Innovation Highlights
+- **Improved Proposal Quality**  
+  Ensures proposals are **100% compliant** with all terms and conditions, increasing win rates.
 
-- 🔍 Real AI-based compliance/risk parsing — **not keyword search**
-- 📄 Markdown + PDF export for easy submission
-- ⚡ Lightning-fast — <5s average response
-- 👥 Works in LAN for distributed teams
-- 🤖 Agent-based, modular & extensible
+- **Democratized Access**  
+  Enables smaller businesses to compete by leveling the playing field with automated legal and technical review.
 
----
-
-## 🏁 Future Enhancements
-
-- User login and proposal tracking dashboard
-- Real-time Gemini API streaming (chat interface)
-- Add `.docx` parsing support
-- Fine-tune embedding + retrieval
-- Deploy backend via Render or GCP Cloud Run
+- **Team Efficiency**  
+  Minimizes dependence on large legal or proposal teams — agents handle the heavy lifting.
 
 ---
 
-## 🏆 Built With ❤️ At
+## 🚀 **Future Scope**
 
-```
-🛠️ Odyssey of Code 2025 — Hackathon Submission
-Team: [Your Team Name Here]
-```
+- **Proposal Draft Generation**  
+  Auto-generate proposal drafts tailored to the RFP’s structure and evaluation criteria.
+
+- **Integrate with Govt Portals**  
+  Pull RFPs directly from platforms like GeM, CPPP, and state eProcurement systems.
+
+- **Live Collaboration**  
+  Enable multiple team members to annotate and review RFPs in real time.
+
+- **Multi-Language Support**  
+  Analyze RFPs written in regional Indian languages or other global languages.
+
+- **Custom Agent Training**  
+  Let users fine-tune their own agent behaviors (e.g., specific compliance checks or pricing models).
+
+- **Competitor Benchmarking**  
+  Suggest strategies based on analysis of previous winners or similar tenders.
+
+---
+
