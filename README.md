@@ -58,12 +58,12 @@ graph TD
 
 | Layer         | Tools / Frameworks                    |
 |---------------|----------------------------------------|
-| **Frontend**  | React.js, TailwindCSS, ShadCN          |
+| **Frontend**  | React.js, CSS          |
 | **Backend**   | FastAPI                                |
-| **LLMs**      | OpenAI GPT-4 / Gemini Pro              |
+| **LLMs**      | Gemini-1.5-Pro-latest              |
 | **RAG Engine**| LangChain / LlamaIndex                 |
 | **Vector DB** | FAISS / Chroma                         |
-| **Agents**    | CrewAI / LangGraph                     |           |
+| **Agents**    | Compliance Checker/ Eligibility Extractor/ Checklist Builder/ Risk Analyzer                      |           |
 | **Hosting**   | Vercel |
 
 ---
@@ -79,8 +79,8 @@ graph TD
 - **Agentic Workflow with Role-Based Execution**  
   Simulates different expert agents (Legal, Technical, Financial) to collaboratively review and summarize RFP sections.
 
-- **Gap & Risk Analysis**  
-  Detects missing compliance requirements or potential disqualifiers based on your business profile.
+- **Visual Tagging**
+  Let users highlight parts of the PDF and tag them using UI. Then use LLMs only on the selected chunks.Tags are Risk, Checklist, Eligibility, Pricing
 
 - **Summarized Outputs**  
   Generates executive summaries, proposal highlights, and requirement tables for quick decision-making.
@@ -99,7 +99,7 @@ graph TD
   Helps teams identify *winnable* RFPs faster by highlighting feasibility and risks upfront.
 
 - **Improved Proposal Quality**  
-  Ensures proposals are **100% compliant** with all terms and conditions, increasing win rates.
+  Ensures proposals are 100% compliant with all terms and conditions, increasing win rates.
 
 - **Democratized Access**  
   Enables smaller businesses to compete by leveling the playing field with automated legal and technical review.
